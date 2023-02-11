@@ -8,3 +8,7 @@ function square(x) {
 }
 
 console.log(square(21))
+
+// square as a building block in defining other functions
+
+square(x) + square(y)
