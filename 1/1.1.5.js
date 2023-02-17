@@ -41,6 +41,15 @@ with two arguments and one function expression
 which reduces to 136
 this is the substitution model for function application
 
-the substitution model for function application is the first of
-a sequence of more elaborate models of how interpreters work presented in this book
+the substitution model for function application is the first of a sequence of 
+more elaborate models of how interpreters work presented in this book
+*/
+
+/*Takeaway:
+-there are multiple ways to evaluate what seems like a straightforward statement
+-these different ways (applicative evaluation vs. normal order evaluation for example) often
+but not always lead to the same result. 
+-applicative order evaluation (the kind of evaluation used JavaScript) is more efficient
+and less complicated than normal order evalutation, but normal order evaluation has its 
+own strengths and value that I have yet to learn.
 */
