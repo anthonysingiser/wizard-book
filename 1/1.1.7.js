@@ -11,12 +11,11 @@
 
     in pseudo:
     function sqrt(x) {
-        return the y with y >= 0 &&  square(y) === x
+        return the y with y >= 0 && square(y) === x
     }
 
     -mathematical functions describe properties of things (declarative knowledge)
     -computer functions describe how to do something (imperative knowledge)  
-
 
 */
 
@@ -63,4 +62,4 @@ console.log(sqrt(sqrt(2) + sqrt(3)))
 
 console.log(square(sqrt(1000)))
 
-//    the sqrt_iter function shows how iteration can be acheived using only function calls
+//    the sqrt_iter function shows how iteration can be acheived using only function calls (recursion)

@@ -27,8 +27,8 @@ console.log(conditional(1 === 1, 0, 5))
 
     The program will be stuck in an infinite loop. 
     Javascript uses applicative order evaluation, which means the function arguments
-    will be evaluated first before the function conditional is applied. The function argument
-    that will start the loop is sqrt_iter. When evaluated it will call itself and this cycle will not stop.
-
-
+    will be evaluated first before the function conditional is applied. The argument
+    that will start the loop is sqrt_iter. When evaluated it will call itself and 
+    this cycle will not stop.
+    
 */
