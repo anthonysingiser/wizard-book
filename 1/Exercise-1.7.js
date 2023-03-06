@@ -28,7 +28,7 @@ function improve(guess, x) {
 }
 
 function is_good_enough(guess, x) {
-    return abs(square(guess - x)) < 0.001
+    return abs(square(guess) - x) < 0.001
 }
 
 function sqrt_iter(guess, x) {
@@ -45,4 +45,3 @@ console.log(sqrt(4))
 /* 
     
 */
-
