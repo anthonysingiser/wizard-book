@@ -50,7 +50,7 @@ console.log(square(sqrt(.00004)))
 
 /* 
     To test I am using the function square to return the square of the result of the function sqrt. 
-    I did this to see how close the result of the function sqrt is to the actual sqrt of the input. 
+    I did this to see how close the result of the function sqrt is to the actual square root of the input. 
     I also placed a console.log statement in the function average in order to print out the improved guesses 
     as they iterated. 
     
