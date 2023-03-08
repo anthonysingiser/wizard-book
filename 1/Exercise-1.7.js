@@ -41,15 +41,10 @@ function sqrt_iter(guess, x) {
 
 
 //very large number test
-//console.log(square(sqrt(90000000000000)))
+//  console.log(square(sqrt(90000000000000)))
 
 //very small number test
-//console.log(square(sqrt(.00004)))
-
-//percent of change in guess good_enough test
-console.log(sqrt(.00004))
-console.log(sqrt(90000000000000))
-console.log(sqrt(16))
+//  console.log(square(sqrt(.00004)))
 
 /* 
     To test I am using the function square to return the square of the result of the function sqrt. 
@@ -58,9 +53,9 @@ console.log(sqrt(16))
     as they iterated. 
     
     With very large numbers (in this case the number 90,000,000,000,000) we see through
-    the logs that the sqrt_iter gets stuck on the number 9486832.980505139 as it's guess. It no longer improves
-    the number through the process of the function and continues guessing this number until the call stack size 
-    is exceeded.
+    the logs that the sqrt_iter gets stuck on the number 9486832.980505139 as it's guess. It no longer 
+    improves the number through the process of the function, nor does it pass the good_enough test as 
+    designed and it continues guessing this number until the call stack size is exceeded.
     
     With very small numbers (in this case the number .00004) we see through the logs that once the guess reaches
     a point that it is under the threshold of .001 of a differnce it no longer iterates, whether or not the result
@@ -74,15 +69,43 @@ console.log(sqrt(16))
 */
 
 function is_good_enough_percent(last_guess, improved_guess){
-    return ((abs(last_guess - improved_guess) / last_guess) * 100) < .005  
+    return ((abs(last_guess - improved_guess) / last_guess) * 100) < .001  
 }
 
 function sqrt_iter2(guess, x) {
-    return is_good_enough_percent(guess, (improve(guess, x)))
-    ? guess
-    : sqrt_iter2(improve(guess, x), x)
+    const improved_guess = improve(guess, x) 
+    return is_good_enough_percent(guess, improved_guess)
+    ? improved_guess
+    : sqrt_iter2(improved_guess, x)
 }
 
 function sqrt(x) {
     return sqrt_iter2(1,x)
 }
+
+console.log(sqrt(.00004))
+console.log(sqrt(90000000000000))
+console.log(sqrt(16))
+
+/*
+    
+    In the function good_enough_percent I apply the function abs to the difference between 
+    the last guess and the improved_guess, it is then divided by the last_guess. The quotient 
+    is multiplied by 100 turning it into a percentage of the last guess. If that percent 
+    difference is less than .001 it is seen as good enough and will return true. 
+    
+    I also had to make changes to the function sqrt_iter. In the function sqrt_iter2 I give 
+    the return of the function improve to the function is_good_enough_percent, as well as have it
+    as the return if it is good enough. I did this so the function is_good_enough_percent would have
+    access to the last guess and the improved guess so that it could work as intended. This makes it
+    so we are truly testing the improved_guess each iteration, and so I now return improved_guess if
+    the function is_good_enough_percent returns true. Returning 'guess' in this case would return what I
+    was testing against and not what I was testing. I also added a const statement for improved_guess to 
+    cleanup the function and have the function processed only one time per iteration.    
+
+    This method works better for very small and very large numbers. It also still functions
+    correctly for regular sized numbers. The iterations no longer get stuck on a guess with no
+    improvement, as was the case with very large numbers, nor do they stop guessing before they 
+    are even close to a good guess, as was the case with very small numbers. 
+
+*/
