@@ -68,14 +68,14 @@ function sqrt_iter(guess, x) {
     
 */
 
-function is_good_enough_percent(last_guess, improved_guess){
-    return ((abs(last_guess - improved_guess) / last_guess) * 100) < .001  
+function is_good_enough_guess_difference(last_guess, improved_guess){
+    return (abs(last_guess - improved_guess)) < .001  
 }
 
 function sqrt_iter2(guess, x) {
     const improved_guess = improve(guess, x) 
-    return is_good_enough_percent(guess, improved_guess)
-    ? improved_guess
+    return is_good_enough_guess_difference(guess, improved_guess)
+    ? improved_guess    
     : sqrt_iter2(improved_guess, x)
 }
 
@@ -83,23 +83,22 @@ function sqrt(x) {
     return sqrt_iter2(1,x)
 }
 
-console.log(sqrt(.00004))
-console.log(sqrt(90000000000000))
-console.log(sqrt(16))
+console.log(sqrt(.00004), ".00004")
+console.log(sqrt(90000000000000), "9000000000000")
+console.log(sqrt(16), "16")
 
 /*
     
-    In the function good_enough_percent I apply the function abs to the difference between 
-    the last guess and the improved_guess, it is then divided by the last_guess. The quotient 
-    is multiplied by 100 turning it into a percentage of the last guess. If that percent 
-    difference is less than .001 it is seen as good enough and will return true. 
+    In the function good_enough_guess_difference I apply the function abs to the difference between 
+    the last guess and the improved guess. If that difference is less than .001 it is seen as good 
+    enough and will return true. 
     
     I also had to make changes to the function sqrt_iter. In the function sqrt_iter2 I give 
-    the return of the function improve to the function is_good_enough_percent, as well as have it
-    as the return if it is good enough. I did this so the function is_good_enough_percent would have
-    access to the last guess and the improved guess so that it could work as intended. This makes it
+    the return of the function improve to the function is_good_enough_guess_difference, as well as have 
+    it as the return if it is good enough. I did this so the function is_good_enough_guess_difference would 
+    have access to the last guess and the improved guess so that it could work as intended. This makes it
     so we are truly testing the improved_guess each iteration, and so I now return improved_guess if
-    the function is_good_enough_percent returns true. Returning 'guess' in this case would return what I
+    the function is_good_enough_guess_difference returns true. Returning 'guess' in this case would return what I
     was testing against and not what I was testing. I also added a const statement for improved_guess to 
     cleanup the function and have the function processed only one time per iteration.    
 
