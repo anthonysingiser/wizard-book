@@ -81,9 +81,9 @@
             *the number of steps for this process grows in proportion to n,
             this is a 'linear iterative process'
 
-        
-
-        
-
-
+        -a 'recursive function' has a function declaration that refers, directly
+        or indirectly to the function itself.
+        -in the case of example 2 we see that a recursive function does not
+        mean that the process of that function is recursive as well, because example 2
+        is a 'recursive function' with an 'iterative process'. 
 */
