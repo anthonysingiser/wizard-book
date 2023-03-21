@@ -19,18 +19,14 @@ function f(n) {
 function f2(n){
     return n < 3
     ? n
-    : f_iter(n-1, n-2, n-3)
+    : f_iter(2, 1, 0, n)
 }
 
-function f_iter(a, b, c){
-    return a >= 3
-    ? f_iter(a-1, b, c)
-    : b >= 3
-    ? f_iter(a, b-2, c)
-    : c >= 3
-    ? f_iter(a, b, c-3)
-    : a + b*2 + c*3
+function f_iter(a, b, c, count){
+    return count < 3
+    ? a
+    : f_iter(a + (2*b) + (3*c), a, b, count - 1)
 }
 
-console.log(f(4))
-console.log(f2(4))
+console.log(f(5))
+console.log(f2(5))
