@@ -33,5 +33,9 @@
                 ex. (row 3 pos 1) = (row 2 pos 0) + (row 2 pos 1)
 |#
 
-
-    
+(define (pascal row pos)
+  (cond ((or (< row 0) (> pos row)) "not a valid coordinate")
+        ((or (= pos 0) (= pos row)) 1)
+        (else (+ (pascal (- row 1) (- pos 1)) (pascal (- row 1) pos)))
+  )
+)
