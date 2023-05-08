@@ -23,6 +23,6 @@
     
     the interpreter gives the error "the object 2 is not applicable"
 
-    The operand 4 evaluates to 2, and so does the operator f.
+    The operand f evaluates to 2, and so does the operator f.
     2 is not a procedure that can operate on 2 and the interpreter returns the error. 
 |#
