@@ -48,20 +48,39 @@
         the (cdr ) of that segment
 
         mid-point-segment takes a line-segment and returns a midpoint.
-            add 
+            add x-1 and x-2, divide by 2
+            add y-1 and y-2, divide by 2
 |#
 
-(define (make-segment point-a point-b) (cons point-a point-b))
+;; a segment is a pair of pairs 
+(define (make-segment a-point b-point) (cons a-point b-point))
 
-(define (start-segment point) (car point))
-(define (end-segment point) (cdr point))
+(define (start-segment start-point) (car start-point))
+(define (end-segment end-point) (cdr end-point))
 
+;; a point is a pair of x-point and y-point
 (define (make-point x y) (cons x y))
 
 (define (x-point x) (car x))
 (define (y-point x) (cdr x))
 
-(define (mid-point-segment line-segment)
-    (let (mid-x (/ 2 (+ (x-point (start-segment line-segment)) (x-point (end-segment line-segment)))))
-         (mid-y (/ 2 (+ (y-point (start-segment line-segment)) (y-point (end-segment line-segment)))))
-    (cons mid-x mid-y)))
+(define (print-point p)
+                (newline)
+                (display "(")
+                (display (x-point p))
+                (display ",")
+                (display (y-point p))
+                (display ")"))
+
+;; average of 2 numbers, for averaging x-one and x-two, y-one and y-two
+(define (avg a b) (/ (+ a b) 2))
+
+;; a procedure midpoint-segment that takes a segment and returns a point
+;; between the start-segment and the end-segment 
+
+(define (midpoint-segment segment)
+    (let ((x-one (x-point (start-segment segment)))
+         (x-two (x-point (end-segment segment)))
+         (y-one (y-point (start-segment segment)))
+         (y-two (y-point (end-segment segment))))
+    (cons (avg x-one x-two) (avg y-one y-two))))
